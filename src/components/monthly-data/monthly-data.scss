@@ -1,0 +1,66 @@
+.monthly-data {
+    margin-top: 110px;
+
+    &__title {
+        margin-bottom: 24px;
+        font-family: $font-roboto;
+        font-weight: 400;
+        font-size: 1.2rem;
+        color: $color-purple;
+    }
+
+    &__inner-wrapper {
+        display: flex;
+        column-gap: 80px;
+    }
+
+    &__block {
+        position: relative;
+        background: $color-white;
+        width: 100%;
+        padding: 32px;
+
+        &::before {
+            content: '';
+            background: url('../../assets/images/svg/shape-1.svg') no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 146px;
+            height: 175px;
+        }
+    }
+
+    &__block-title {
+        margin-bottom: 18px;
+        font-family: $font-roboto;
+        font-weight: 400;
+        font-size: .9rem;
+        color: $color-purple;
+    }
+
+    &__block-items-main {
+        margin-bottom: 18px;
+        font-family: $font-albula;
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: $color-purple;
+    }
+    
+    &__block-items-secondary {
+
+    }
+
+    &__revenue {
+        
+    }
+
+    &__cost {
+
+    }
+
+    &__margin {
+
+    }
+}

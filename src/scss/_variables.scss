@@ -9,7 +9,21 @@ $color-white:   #ffffff;
 //fonts
 @font-face {
     font-family: "Albuna-Pro";
-    src: url("fonts/albula-pro/AlbulaPro-Regular.otf") format("truetype");
+    src: url("fonts/albula-pro/AlbulaPro-Bold.otf") format("truetype");
+    font-weight: 700;
 }
 
-$font-albuna: "Albuna-Pro", sans-serif;
+@font-face {
+    font-family: "Albuna-Pro";
+    src: url("fonts/albula-pro/AlbulaPro-ExtraBold.otf") format("truetype");
+    font-weight: 800;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;1,500&display=swap');
+
+$font-albula: "Albuna-Pro", sans-serif;
+$font-roboto: 'Roboto Mono', monospace;
+
+
+
+
