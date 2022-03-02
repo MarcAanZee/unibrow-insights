@@ -1,0 +1,480 @@
+//Transform mixin
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-ms-transform: $transform;
+	transform: $transform;
+}
+
+@mixin transform-origin($transform-origin) {
+	-webkit-transform-origin: $transform-origin;
+	-ms-transform-origin: $transform-origin;
+	transform-origin: $transform-origin;
+}
+
+@mixin transform-style($transform-style) {
+	-webkit-transform-style: $transform-style;
+	-ms-transform-style: $transform-style;
+	transform-style: $transform-style;
+}
+
+//Flex mixin
+
+@mixin flexbox($value: flex) {
+	@if value == inline {
+		display: -webkit-inline-box;
+		display: -webkit-inline-flex;
+		display: -moz-inline-flex;
+		display: -ms-inline-flexbox;
+		display: inline-flex;
+	} @else {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+ }
+
+ @mixin flex-direction($value: row) {
+	@if $value == row-reverse {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: horizontal;
+	} @else if $value == column {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+	} @else if $value == column-reverse {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: vertical;
+	} @else {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: horizontal;
+	}
+	-webkit-flex-direction: $value;
+	-moz-flex-direction: $value;
+	-ms-flex-direction: $value;
+	flex-direction: $value;
+}
+
+@mixin flex-wrap($value: nowrap) {
+	// No Webkit Box fallback.
+	-webkit-flex-wrap: $value;
+	-moz-flex-wrap: $value;
+	@if $value == nowrap {
+		-ms-flex-wrap: none;
+	} @else {
+		-ms-flex-wrap: $value;
+	}
+	flex-wrap: $value;
+}
+
+@mixin flex-flow($values: (row nowrap)) {
+	// No Webkit Box fallback.
+	-webkit-flex-flow: $values;
+	-moz-flex-flow: $values;
+	-ms-flex-flow: $values;
+	flex-flow: $values;
+}
+
+@mixin order($int: 0) {
+	-webkit-box-ordinal-group: $int + 1;
+	-webkit-order: $int;
+	-moz-order: $int;
+	-ms-flex-order: $int;
+	order: $int;
+}
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+
+	// Set a variable to be used by box-flex properties
+	$fg-boxflex: $fg;
+
+	// Box-Flex only supports a flex-grow value so let's grab the
+	// first item in the list and just return that.
+	@if type-of($fg) == 'list' {
+		$fg-boxflex: nth($fg, 1);
+	}
+
+	-webkit-box-flex: $fg-boxflex;
+	-webkit-flex: $fg $fs $fb;
+	-moz-box-flex: $fg-boxflex;
+	-moz-flex: $fg $fs $fb;
+	-ms-flex: $fg $fs $fb;
+	flex: $fg $fs $fb;
+}
+
+@mixin flex-grow($int: 0) {
+	-webkit-box-flex: $int;
+	-webkit-flex-grow: $int;
+	-moz-flex-grow: $int;
+	-ms-flex-positive: $int;
+	flex-grow: $int;
+}
+
+@mixin flex-shrink($int: 1) {
+	-webkit-flex-shrink: $int;
+	-moz-flex-shrink: $int;
+	-ms-flex-negative: $int;
+	flex-shrink: $int;
+}
+
+@mixin flex-basis($value: auto) {
+	-webkit-flex-basis: $value;
+	-moz-flex-basis: $value;
+	-ms-flex-preferred-size: $value;
+	flex-basis: $value;
+}
+
+@mixin justify-content($value: flex-start) {
+	@if $value == flex-start {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+	} @else if $value == flex-end {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+	} @else if $value == space-between {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+	} @else if $value == space-around {
+		-ms-flex-pack: distribute;
+	} @else {
+		-webkit-box-pack: $value;
+		-ms-flex-pack: $value;
+	}
+	-webkit-justify-content: $value;
+	-moz-justify-content: $value;
+	justify-content: $value;
+}
+
+@mixin align-items($value: stretch) {
+	@if $value == flex-start {
+		-webkit-box-align: start;
+		-ms-flex-align: start;
+	} @else if $value == flex-end {
+		-webkit-box-align: end;
+		-ms-flex-align: end;
+	} @else {
+		-webkit-box-align: $value;
+		-ms-flex-align: $value;
+	}
+	-webkit-align-items: $value;
+	-moz-align-items: $value;
+	align-items: $value;
+}
+
+@mixin align-self($value: auto) {
+	// No Webkit Box Fallback.
+	-webkit-align-self: $value;
+	-moz-align-self: $value;
+	@if $value == flex-start {
+		-ms-flex-item-align: start;
+	} @else if $value == flex-end {
+		-ms-flex-item-align: end;
+	} @else {
+		-ms-flex-item-align: $value;
+	}
+	align-self: $value;
+}
+
+@mixin align-content($value: stretch) {
+	// No Webkit Box Fallback.
+	-webkit-align-content: $value;
+	-moz-align-content: $value;
+	@if $value == flex-start {
+		-ms-flex-line-pack: start;
+	} @else if $value == flex-end {
+		-ms-flex-line-pack: end;
+	} @else {
+		-ms-flex-line-pack: $value;
+	}
+	align-content: $value;
+}
+
+//Animation mixin
+@mixin animation($animation) {
+	-webkit-animation: $animation;
+	animation: $animation;
+}
+
+@mixin animation-duration($animation-duration) {
+	-webkit-animation-duration: $animation-duration;
+	animation-duration: $animation-duration;
+}
+
+@mixin animation-name($animation-name) {
+	-webkit-animation-name: $animation-name;
+	animation-name: $animation-name;
+}
+
+@mixin animation-iteration-count($animation-iteration-count) {
+	-webkit-animation-iteration-count: $animation-iteration-count;
+	animation-iteration-count: $animation-iteration-count;
+}
+
+@mixin animation-direction($animation-direction) {
+	-webkit-animation-direction: $animation-direction;
+	animation-direction: $animation-direction;
+}
+
+@mixin animation-timing-function($animation-timing-function) {
+	-webkit-animation-timing-function: $animation-timing-function;
+	animation-timing-function: $animation-timing-function;
+}
+
+//Perspective mixin
+@mixin perspective($perspective) {
+	-webkit-perspective: $perspective;
+	-ms-perspective: $perspective;
+	perspective: $perspective;
+}
+
+//Backface-visibility mixin
+@mixin backface-visibility($backface-visibility) {
+	-webkit-backface-visibility: $backface-visibility;
+	-ms-backface-visibility: $backface-visibility;
+	backface-visibility: $backface-visibility;
+}
+
+//Keyframes mixin
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}
+}
+
+@function prefix($property, $prefixes: (webkit moz o ms)) {
+	$vendor-prefixed-properties: transform background-clip background-size;
+	$result: ();
+	@each $prefix in $prefixes {
+		@if index($vendor-prefixed-properties, $property) {
+			$property: -#{$prefix}-#{$property}
+		}
+		$result: append($result, $property);
+	}
+	@return $result;
+}
+
+//Transition mixin
+@mixin transition($transitions...) {
+	$unfoldedTransitions: ();
+	@each $transition in $transitions {
+		$unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+	}
+
+	-webkit-transition: $unfoldedTransitions;
+	transition: $unfoldedTransitions;
+}
+
+@function unfoldTransition ($transition) {
+	// Default values
+	$property: all;
+	$duration: .2s;
+	$easing: null; // Browser default is ease, which is what we want
+	$delay: null; // Browser default is 0, which is what we want
+	$defaultProperties: ($property, $duration, $easing, $delay);
+
+	// Grab transition properties if they exist
+	$unfoldedTransition: ();
+	@for $i from 1 through length($defaultProperties) {
+		$p: null;
+		@if $i <= length($transition) {
+			$p: nth($transition, $i)
+		} @else {
+			$p: nth($defaultProperties, $i)
+		}
+		$unfoldedTransition: append($unfoldedTransition, $p);
+	}
+
+	@return $unfoldedTransition;
+}
+
+//Placeholder mixin
+@mixin placeholder {
+	&::-webkit-input-placeholder {@content}
+	&:-moz-placeholder           {@content}
+	&::-moz-placeholder          {@content}
+	&:-ms-input-placeholder      {@content}
+}
+
+/**
+ *Gradient!
+ **/
+@function convert-angle($value, $unit) {
+	$convertable-units: deg grad turn rad;
+	$conversion-factors: 1 (10grad/9deg) (1turn/360deg) (3.1415926rad/180deg);
+	@if index($convertable-units, unit($value)) and index($convertable-units, $unit) {
+		@return $value
+             / nth($conversion-factors, index($convertable-units, unit($value)))
+             * nth($conversion-factors, index($convertable-units, $unit));
+	}
+
+	@warn "Cannot convert `#{unit($value)}` to `#{$unit}`.";
+}
+
+@function is-direction($value) {
+	$is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+	$is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+	@return $is-direction or $is-angle;
+}
+
+@function legacy-direction($value) {
+	@if is-direction($value) == false {
+		@warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction";
+	}
+
+	$conversion-map: (
+			to top          : bottom,
+			to top right    : bottom left,
+			//to right top    : left bottom,
+			//to right        : left,
+			to bottom right : top left,
+			//to right bottom : left top,
+			to bottom       : top,
+			//to bottom left  : top right,
+			//to left bottom  : right top,
+			//to left         : right,
+			//to left top     : right bottom,
+			//to top left     : bottom right
+	);
+
+	@if map-has-key($conversion-map, $value) {
+		@return map-get($conversion-map, $value);
+	}
+
+	@return 90deg - convert-angle($value, 'deg');
+}
+
+@mixin linear-gradient($direction, $color-stops...) {
+	@if is-direction($direction) == false {
+		$color-stops: ($direction, $color-stops);
+		$direction: 180deg;
+	}
+
+	background: nth(nth($color-stops, 1), 1);
+	background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+	background: linear-gradient($direction, $color-stops);
+}
+
+/*
+ * USER SELECT
+ */
+@mixin user-select($user-select) {
+	-webkit-user-select: $user-select;
+	-khtml-user-select: $user-select;
+	-moz-user-select: $user-select;
+	-ms-user-select: $user-select;
+	user-select: $user-select;
+}
+
+/*
+ * TOUCH SELECT
+ */
+@mixin touch-select($touch-select) {
+	-ms-touch-action: $touch-select;
+	touch-action: $touch-select;
+}
+
+/*
+ *	FORM STEP BUTTON
+ */
+@mixin form-step-button($step) {
+	$button: ($step*-120) + 125;
+	$button-hover: $button - 60;
+
+	.form-step {
+		.form-button-next {
+			background-position: -352px $button + px;
+
+			&:hover {
+				background-position: -352px $button-hover + px;
+			}
+		}
+	}
+}
+
+/*
+ *	APPEARANCE
+ */
+@mixin appearance($appearance) {
+	-webkit-appearance: $appearance;
+	-moz-appearance: $appearance;
+	appearance: $appearance;
+}
+
+/*
+ *	PHOTOSHOP LETTER SPACING TO CSS LETTER SPACING
+ */
+@mixin letter-spacing($photoshop-val) {
+	$css-val: $photoshop-val * 0.001;
+	letter-spacing: $css-val + em;
+}
+
+/*
+ *	FONT-FACE GENERATOR
+ */
+@function str-split($string, $separator) {
+	$split-arr: ();
+	$index : str-index($string, $separator);
+	@while $index != null {
+		$item: str-slice($string, 1, $index - 1);
+		$split-arr: append($split-arr, $item);
+		$string: str-slice($string, $index + 1);
+		$index : str-index($string, $separator);
+	}
+	$split-arr: append($split-arr, $string);
+
+	@return $split-arr;
+}
+
+@mixin font($values) {
+	$split-fonts: str-split($values, ",");
+
+	@each $font in $split-fonts {
+		$font-values: str-split($font, " ");
+
+		$font:          nth($font-values, 1);
+		$font-weight:   unquote(nth($font-values, 2));
+		$font-style:    unquote(nth($font-values, -1));
+
+
+		$font-folder: 'Regular';
+
+		@if $font-weight          == '100' {
+			$font-folder: 'Thin'
+		} @else if $font-weight   == '200' {
+			$font-folder: 'ExtraLight'
+		} @else if $font-weight   == '300' {
+			$font-folder: 'Light'
+		} @else if $font-weight   == '500' {
+			$font-folder: 'Medium'
+		} @else if $font-weight   == '600' {
+			$font-folder: 'SemiBold'
+		} @else if $font-weight   == '700' {
+			$font-folder: 'Bold'
+		} @else if $font-weight   == '800' {
+			$font-folder: 'Heavy'
+		} @else if $font-weight   == '900' {
+			$font-folder: 'Black'
+		}
+
+		@if $font-style == 'italic' {
+			$font-folder: $font-folder + 'Italic'
+		}
+		@else {
+			$font-style: normal;
+		}
+
+		$font-filename: $font + '-' + $font-folder;
+
+		@font-face {
+			font-family: $font;
+			src: url("https://cdn.socialblue.com/assets/fonts/#{$font}/#{$font-folder}/#{$font-filename}.woff2") format("woff2"),
+			url("https://cdn.socialblue.com/assets/fonts/#{$font}/#{$font-folder}/#{$font-filename}.woff") format("woff");
+			font-style: #{$font-style};
+			font-weight: #{$font-weight};
+		}
+	}
+}

@@ -1,0 +1,103 @@
+/**
+ *  Responsive
+ */
+$tablet-width:          768px !default;
+$desktop-width:         1024px !default;
+
+@mixin mobile {
+    @if ($page-has-desktop) {
+        @media (max-width: #{$desktop-width - 1}) {
+            @content;
+        }
+    }
+}
+
+@mixin tablet {
+    @if ($page-has-desktop) {
+        @media (min-width: #{$tablet-width}) {
+            @content;
+        }
+    }
+}
+
+@mixin desktop {
+    @if ($page-has-desktop) {
+        @media (min-width: #{$desktop-width}) {
+            @content;
+        }
+    }
+}
+
+/**
+ *  Calculate Pixels to VW
+ */
+@function vw($pixels) {
+    //Create the default variables, like no. of values
+    $number-of-values: length($pixels);
+    $result: ();
+    $i: 1;
+
+    //1. Set a default Mobile PSD Width
+    //2. Divide it by 100, so that the correct number comes out
+    //3. When the custom width is unitless, add px to it
+    $width-mobile-psd: 640px !default;
+    $width-mobile-psd: $width-mobile-psd/100;
+
+    @if (unitless($width-mobile-psd)) {
+        $width-mobile-psd: $width-mobile-psd * 1px;
+    }
+
+    //Create a loop that goes to al the values in the variable $number
+    //1. Split it using the nth() function, SCSS doesn't support split by space by default
+    //2. When the value is unitless, add px to it
+    //3. Create a string that merges all the values
+    @while $i <= $number-of-values {
+        $value: nth($pixels, $i);
+
+        @if (unitless($value)) {
+            $value: $value * 1px;
+        }
+
+        $result: append($result, $value/$width-mobile-psd  + vw);
+        $i: $i + 1;
+    }
+
+    @return $result;
+}
+
+/**
+ *  Calculate Pixels to VW for tablet
+ */
+@function vw2($pixels) {
+    //Create the default variables, like no. of values
+    $number-of-values: length($pixels);
+    $result: ();
+    $i: 1;
+
+    //1. Set a default Mobile PSD Width
+    //2. Divide it by 100, so that the correct number comes out
+    //3. When the custom width is unitless, add px to it
+    $width-mobile-psd: 1024px !default;
+    $width-mobile-psd: $width-mobile-psd/100;
+
+    @if (unitless($width-mobile-psd)) {
+        $width-mobile-psd: $width-mobile-psd * 1px;
+    }
+
+    //Create a loop that goes to al the values in the variable $number
+    //1. Split it using the nth() function, SCSS doesn't support split by space by default
+    //2. When the value is unitless, add px to it
+    //3. Create a string that merges all the values
+    @while $i <= $number-of-values {
+        $value: nth($pixels, $i);
+
+        @if (unitless($value)) {
+            $value: $value * 1px;
+        }
+
+        $result: append($result, $value/$width-mobile-psd  + vw);
+        $i: $i + 1;
+    }
+
+    @return $result;
+}

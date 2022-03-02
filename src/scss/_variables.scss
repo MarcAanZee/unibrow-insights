@@ -1,0 +1,15 @@
+// colors
+$color-orange:  #ff6964;
+$color-purple:  #3c1e5f;
+$color-blue:    #19e1e1;
+$color-grey:    #b9b9b9;
+$color-black:   #000000;
+$color-white:   #ffffff;
+
+//fonts
+@font-face {
+    font-family: "Albuna-Pro";
+    src: url("fonts/albula-pro/AlbulaPro-Regular.otf") format("truetype");
+}
+
+$font-albuna: "Albuna-Pro", sans-serif;
