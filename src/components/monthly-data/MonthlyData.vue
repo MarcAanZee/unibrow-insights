@@ -10,14 +10,12 @@
                     Revenue
                 </h4>
 
-                <p class="monthly-data__block-items">
-                    <span class="monthly-data__block-items-main monthly-data__block-revenue-month">
-                        {{ RevenueMonth }}
-                    </span>
-                    <br>
-                    <span class="monthly-data__block-items-secondary monthly-data__block-revenue-month-forecast">
-                        {{ RevenueMonthForecast }}
-                    </span>
+                <p class="monthly-data__block-items-main monthly-data__block-revenue-month">
+                    {{ RevenueMonth }}
+                </p>
+
+                <p class="monthly-data__block-items-secondary monthly-data__block-revenue-month-forecast">
+                    {{ RevenueMonthForecast }}
                 </p>
             </div>
 
@@ -25,12 +23,28 @@
                 <h4 class="monthly-data__block-title">
                     Cost
                 </h4>
+                
+                <p class="monthly-data__block-items-main monthly-data__block-revenue-month">
+                    {{ CostMonth }}
+                </p>
+                
+                <p class="monthly-data__block-items-secondary monthly-data__block-revenue-month-forecast">
+                    {{ CostMonthForecast }}
+                </p>
             </div>
 
             <div class="monthly-data__block monthly-data__margin">
                 <h4 class="monthly-data__block-title">
                     Margin
                 </h4>
+
+                <p class="monthly-data__block-items-main monthly-data__block-revenue-month">
+                    {{ MarginMonth }}
+                </p>
+                
+                <p class="monthly-data__block-items-secondary monthly-data__block-revenue-month-forecast">
+                    {{ MarginMonthForecast }}
+                </p>
             </div>
         </div>
     </section>
@@ -41,7 +55,11 @@ export default {
     data() {
         return {
             RevenueMonth: "25,968.92",
-            RevenueMonthForecast: "61,925.88"
+            RevenueMonthForecast: "61,925.88",
+            CostMonth: "16,624.32",
+            CostMonthForecast: "39.642.60",
+            MarginMonth: "9,344.60",
+            MarginMonthForecast: "22,283.27"
         }
     }
 }
