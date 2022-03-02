@@ -2,3 +2,16 @@
 @import "mixins.scss";
 @import "responsive.scss";
 @import "reset.scss";
+
+$page-has-desktop: true;
+
+body {
+    background-color: #f1f1f1;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 1600px) and (min-width: 1024px) {
+    #app{ 
+        margin: 0 64px;
+    }
+}

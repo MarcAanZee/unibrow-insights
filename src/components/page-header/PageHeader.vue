@@ -1,18 +1,34 @@
 <template>
-  <main class="page-header">
-    <h1 class="page-header__title">page-header</h1>
+  <section class="page-header">
+      <div class="page-header__title">
+        <h1 class="page-header__title-campaign">{{ campaignName }}</h1>
+        <h2 class="page-header__title-client">{{ clientName }}</h2>
+      </div>
 
-    <div class="page-header__button">
-        <router-link class="page-header__button-label" to="/page-header">Show page-header</router-link>
-    </div>
-  </main>
+      <div class="page-header__campaign-status">
+          <div class="page-header__campaign-status-indicator"></div>
+          <span class="page-header__campaign-status-text">{{ campaignStatus }}</span>
+      </div>
+  </section>
 </template>
 
 <script>
 
+export default {
+
+    data() {
+        return {
+            campaignName : "Verisure DE - V7 - SLP - € 300 discount - ZOE",
+            clientName : "Verisure Deutschland GmbH",
+            campaignStatus : "Active"
+        }
+    }
+
+}
+    
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../../scss/global.scss",
 "page-header";
 </style>

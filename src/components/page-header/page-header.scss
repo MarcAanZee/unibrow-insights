@@ -1,5 +1,40 @@
 .page-header {
     width: 100%;
-    background: red;
     font-family: $font-albuna;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+        padding: 40px 0;
+        font-weight: 800;
+
+        &-campaign {
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            color: $color-orange;
+        }
+
+        &-client {
+            color: $color-purple;
+        }
+    }
+
+    &__campaign-status {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-indicator {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 10px;
+            background: #34cf24;
+        }
+
+        &-text {
+            color: $color-purple;
+        }
+    }
 }
