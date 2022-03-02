@@ -11,6 +11,15 @@ $color-white:   #ffffff;
     font-family: "Albuna-Pro";
     src: url("fonts/albula-pro/AlbulaPro-Bold.otf") format("truetype");
     font-weight: 700;
+<<<<<<< HEAD
+}
+
+@font-face {
+    font-family: "Albuna-Pro";
+    src: url("fonts/albula-pro/AlbulaPro-ExtraBold.otf") format("truetype");
+    font-weight: 800;
+=======
+>>>>>>> monthly-data
 }
 
 @font-face {
@@ -19,4 +28,11 @@ $color-white:   #ffffff;
     font-weight: 800;
 }
 
-$font-albuna: "Albuna-Pro", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;1,500&display=swap');
+
+$font-albula: "Albuna-Pro", sans-serif;
+$font-roboto: 'Roboto Mono', monospace;
+
+
+
+
