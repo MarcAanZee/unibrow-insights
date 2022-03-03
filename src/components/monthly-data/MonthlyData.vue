@@ -54,6 +54,23 @@
 export default {
     data() {
         return {
+            items: [
+                { 
+                    title: 'Revenue',
+                    data: '25,968.92',
+                    projectedData: '61,925.88'
+                },
+                { 
+                    title: 'Cost',
+                    data: '16,624.32',
+                    projectedData: '39.642.60'
+                },
+                { 
+                    title: 'Margin',
+                    data: '9,344.60',
+                    projectedData: '22,283.27'
+                },
+            ],
             RevenueMonth: "25,968.92",
             RevenueMonthForecast: "61,925.88",
             CostMonth: "16,624.32",

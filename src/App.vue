@@ -3,11 +3,13 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import PageHeader from './components/page-header/PageHeader.vue'
 import MonthlyData from './components/monthly-data/MonthlyData.vue'
+import DailyData from './components/daily-data/DailyData.vue'
 </script>
 
 <template>
   <PageHeader msg="Unibrow Insights" />
   <MonthlyData />
+  <DailyData />
 </template>
 
 <style lang="scss">
