@@ -41,6 +41,8 @@
         ]
     },
     "name": "GAES - Mob - NLP NAD dynamic v2",
+    "client_name": "Amplifon Ibérica S.A.U",
+    "is_active": true,
     "status": 10,
     "purchase": {
         "training": {

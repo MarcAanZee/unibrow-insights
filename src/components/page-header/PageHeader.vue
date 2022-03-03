@@ -6,24 +6,39 @@
       </div>
 
       <div class="page-header__campaign-status">
-          <div class="page-header__campaign-status-indicator"></div>
-          <span class="page-header__campaign-status-text">{{ campaignStatus }}</span>
+          <div class="page-header__campaign-status-indicator" :id="isActive.campaignStatusSymbol"></div>
+          <span class="page-header__campaign-status-text">{{ isActive.campaignStatus }}</span>
       </div>
   </section>
 </template>
 
 <script>
+import forecastData from "../../data.json";
 
 export default {
-
     data() {
         return {
-            campaignName : "Verisure DE - V7 - SLP - € 300 discount - ZOE",
-            clientName : "Verisure Deutschland GmbH",
-            campaignStatus : "Active"
+            campaignName : forecastData.name,
+            clientName : forecastData.client_name,
+            
+        }
+    },
+    computed: {
+        isActive() {
+            let activity = "";
+
+            if(forecastData.is_active === true) {
+                activity = "Active"
+            } else {
+                activity = "Not active"
+            }
+
+            return {
+                campaignStatusSymbol: forecastData.is_active,
+                campaignStatus : activity
+            }
         }
     }
-
 }
     
 </script>

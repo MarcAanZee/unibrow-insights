@@ -31,6 +31,14 @@
             margin-right: 10px;
             border-radius: 10px;
             background: #34cf24;
+
+            &#true {
+                background: #34cf24;
+            }
+
+            &#false {
+                background: red;
+            }
         }
 
         &-text {

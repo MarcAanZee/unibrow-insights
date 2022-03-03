@@ -5,45 +5,17 @@
         </h3>
 
         <div class="monthly-data__inner-wrapper">
-            <div class="monthly-data__block monthly-data__revenue">
+            <div class="monthly-data__block" v-for="item in calcMonth" :key="item.title">
                 <h4 class="monthly-data__block-title">
-                    Revenue
+                    {{ item.title }}
                 </h4>
 
-                <p class="monthly-data__block-items-main monthly-data__block-revenue-month">
-                    {{ RevenueMonth }}
+                <p class="monthly-data__block-items-main">
+                    {{ item.data }}
                 </p>
 
-                <p class="monthly-data__block-items-secondary monthly-data__block-revenue-month-forecast">
-                    {{ RevenueMonthForecast }}
-                </p>
-            </div>
-
-            <div class="monthly-data__block monthly-data__cost">
-                <h4 class="monthly-data__block-title">
-                    Cost
-                </h4>
-                
-                <p class="monthly-data__block-items-main monthly-data__block-revenue-month">
-                    {{ CostMonth }}
-                </p>
-                
-                <p class="monthly-data__block-items-secondary monthly-data__block-revenue-month-forecast">
-                    {{ CostMonthForecast }}
-                </p>
-            </div>
-
-            <div class="monthly-data__block monthly-data__margin">
-                <h4 class="monthly-data__block-title">
-                    Margin
-                </h4>
-
-                <p class="monthly-data__block-items-main monthly-data__block-revenue-month">
-                    {{ MarginMonth }}
-                </p>
-                
-                <p class="monthly-data__block-items-secondary monthly-data__block-revenue-month-forecast">
-                    {{ MarginMonthForecast }}
+                <p class="monthly-data__block-items-secondary">
+                    {{ item.projectedData }}
                 </p>
             </div>
         </div>
@@ -51,33 +23,47 @@
 </template>
 
 <script>
+import forecastData from "../../data.json";
+
 export default {
-    data() {
-        return {
-            items: [
+    computed: {
+        calcMonth() {
+            // Revenue functions
+            const totalRev = forecastData.revenue.predictions.reduce(
+            (previousValue, currentValue) => previousValue + currentValue,
+            0);
+
+            const currentRev = forecastData.revenue.predictions.splice(0, 3).reduce(
+            (previousValue, currentValue) => previousValue + currentValue,
+            0);
+
+            // Purchase functions
+            const totalPur = forecastData.purchase.predictions.reduce(
+            (previousValue, currentValue) => previousValue + currentValue,
+            0);
+
+            const currentPur = forecastData.purchase.predictions.splice(0, 3).reduce(
+            (previousValue, currentValue) => previousValue + currentValue,
+            0);
+
+            return [
                 { 
                     title: 'Revenue',
-                    data: '25,968.92',
-                    projectedData: '61,925.88'
+                    data: currentRev.toFixed(2),
+                    projectedData: totalRev.toFixed(2)
                 },
                 { 
                     title: 'Cost',
-                    data: '16,624.32',
-                    projectedData: '39.642.60'
+                    data: currentPur.toFixed(2),
+                    projectedData: totalPur.toFixed(2)
                 },
                 { 
                     title: 'Margin',
-                    data: '9,344.60',
-                    projectedData: '22,283.27'
+                    data: (currentRev - currentPur).toFixed(2),
+                    projectedData: (totalRev - totalPur).toFixed(2) 
                 },
-            ],
-            RevenueMonth: "25,968.92",
-            RevenueMonthForecast: "61,925.88",
-            CostMonth: "16,624.32",
-            CostMonthForecast: "39.642.60",
-            MarginMonth: "9,344.60",
-            MarginMonthForecast: "22,283.27"
-        }
+            ]
+        }    
     }
 }
 </script>
